@@ -17,12 +17,22 @@ function App() {
         setData(data.filter((_, key) => key !== targetIndex))
     }
 
+    const handleSubmit = (newRow: { id: number; name: string; gender: string; school: string; }) => {
+        setData([...data, newRow]);
+    }
+
   return (
       <div className="App">
         <h1 className = "App-header">Danh sách sinh viên VDT2024</h1>
         <Table data={data} deleteRow={handleDeleteRow}/>
         <button className="btn" onClick={() => setBoxOpen(true)}>Add</button>
-         {boxOpen && <EditorBox closeBox={() => setBoxOpen(false)}/>}
+         {boxOpen && (
+             <EditorBox
+                 closeBox={() => {
+                     setBoxOpen(false);
+                 }}
+                 onSubmit={handleSubmit}></EditorBox>
+         )}
       </div>
   );
 }
