@@ -1,16 +1,17 @@
 import React, {useState} from "react"
 import "./EditorBox.css";
 
-export const EditorBox = ({closeBox, onSubmit}) => {
-    const [formState, setFormState] = useState({
+export const EditorBox = ({closeBox, onSubmit, defaultValue}) => {
+    const [formState, setFormState] = useState(
+        defaultValue || {
         id:0,
         name:"",
         gender:"Male",
-        school:"",
+        university:"",
     });
 
     const validateForm = () => {
-        if(formState.id && formState.name && formState.gender && formState.school) {
+        if(formState.id && formState.name && formState.gender && formState.university) {
             return true;
         } else {
             return false;
@@ -57,8 +58,8 @@ export const EditorBox = ({closeBox, onSubmit}) => {
                       </select>
                   </div>
                   <div className="form-group">
-                      <label htmlFor="school">School</label>
-                      <input name={"school"} value={formState.school} onChange={handleChange}/>
+                      <label htmlFor="university">University</label>
+                      <input name={"university"} value={formState.university} onChange={handleChange}/>
                   </div>
                   <button type="submit" className="btn" onClick={handleSubmit}>Submit</button>
               </form>

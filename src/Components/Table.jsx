@@ -3,16 +3,16 @@ import "./Table.css";
 import {BsFillPencilFill, BsFillTrashFill} from "react-icons/bs";
 
 // @ts-ignore
-export const Table = ({data, deleteRow}) => {
+export const Table = ({data, deleteRow, editRow}) => {
     return (
         <table className="table">
             <thead>
             <tr>
-                <th>TT</th>
-                <th>Họ và tên</th>
-                <th>Giới tính</th>
-                <th>Trường</th>
-                <th>Hành động</th>
+                <th>ID</th>
+                <th>Full name</th>
+                <th>Gender</th>
+                <th>University</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -22,11 +22,11 @@ export const Table = ({data, deleteRow}) => {
                         <td>{val.id}</td>
                         <td>{val.name}</td>
                         <td>{val.gender}</td>
-                        <td>{val.school}</td>
+                        <td>{val.university}</td>
                         <td>
                       <span className="actions">
                           <BsFillTrashFill className="delete-btn" onClick={() => deleteRow(key)}/>
-                          <BsFillPencilFill />
+                          <BsFillPencilFill onClick={() => editRow(key)}/>
                       </span>
                         </td>
                     </tr>
