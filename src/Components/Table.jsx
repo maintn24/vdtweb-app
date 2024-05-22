@@ -16,7 +16,7 @@ export const Table = ({data, deleteRow}) => {
             </tr>
             </thead>
             <tbody>
-            {data.map((val: { id: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; gender: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; school: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }, key: React.Key | null | undefined) => {
+            {data.map((val, key) => {
                 return (
                     <tr key={key}>
                         <td>{val.id}</td>

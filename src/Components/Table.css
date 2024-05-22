@@ -6,9 +6,9 @@
     border: 1px solid #ddd;
     width: 100%;
     font-size: calc(10px + 2vmin);
-
     table-layout: auto;
     overflow-x: auto;
+    border-radius: 15px;
 }
 
 .table thead {
@@ -19,6 +19,7 @@
 .table th, .table td {
     padding-inline: 10px;
 }
+
 
 .table tbody tr:hover {
     background-color: gray;

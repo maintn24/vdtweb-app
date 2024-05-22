@@ -17,7 +17,7 @@ function App() {
         setData(data.filter((_, key) => key !== targetIndex))
     }
 
-    const handleSubmit = (newRow: { id: number; name: string; gender: string; school: string; }) => {
+    const handleSubmit = (newRow) => {
         setData([...data, newRow]);
     }
 

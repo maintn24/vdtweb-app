@@ -1,8 +1,7 @@
 import React, {useState} from "react"
 import "./EditorBox.css";
 
-// @ts-ignore
-export const EditorBox = ({closeBox}) => {
+export const EditorBox = ({closeBox, onSubmit}) => {
     const [formState, setFormState] = useState({
         id:0,
         name:"",
@@ -10,24 +9,35 @@ export const EditorBox = ({closeBox}) => {
         school:"",
     });
 
-    const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    const validateForm = () => {
+        if(formState.id && formState.name && formState.gender && formState.school) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const handleChange = (e) => {
         setFormState({
             ...formState,
             [e.target.name]: e.target.value
         })
     }
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
+        if(!validateForm()) return;
+
         console.log(formState);
+        onSubmit(formState)
+        closeBox();
     }
 
     return (
       <div className="box-container"
            onClick={(e) => {
-               const target = e.target as HTMLElement;
-               if (target.className.includes("box-container")) closeBox();
+               if (e.target.className === "box-container") closeBox();
            }}>
           <div className="box">
               <form>
