@@ -8,18 +8,18 @@ export const Table = ({data, deleteRow, editRow}) => {
         <table className="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Full name</th>
-                <th>Gender</th>
-                <th>University</th>
-                <th>Actions</th>
+                <th>TT</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Trường đang theo học</th>
+                <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
             {data.map((val, key) => {
                 return (
                     <tr key={key}>
-                        <td>{val.id}</td>
+                        <td>{key+1}</td>
                         <td>{val.name}</td>
                         <td>{val.gender}</td>
                         <td>{val.university}</td>
