@@ -1,9 +1,22 @@
-import React from "react"
+import React from "react";
 import "./Table.css";
-import {BsFillPencilFill, BsFillTrashFill} from "react-icons/bs";
+import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 
-// @ts-ignore
-export const Table = ({data, deleteRow, editRow}) => {
+interface Student {
+    _id: string;
+    name: string;
+    gender: string;
+    university: string;
+    // Add other properties as needed
+}
+
+interface TableProps {
+    data: Student[];
+    deleteRow: (index: number) => void;
+    editRow: (index: number) => void;
+}
+
+export const Table: React.FC<TableProps> = ({ data, deleteRow, editRow }) => {
     return (
         <table className="table">
             <thead>
@@ -19,18 +32,21 @@ export const Table = ({data, deleteRow, editRow}) => {
             {data.map((val, key) => {
                 return (
                     <tr key={key}>
-                        <td>{key+1}</td>
+                        <td>{key + 1}</td>
                         <td>{val.name}</td>
                         <td>{val.gender}</td>
                         <td>{val.university}</td>
                         <td>
-                      <span className="actions">
-                          <BsFillTrashFill className="delete-btn" onClick={() => deleteRow(key)}/>
-                          <BsFillPencilFill onClick={() => editRow(key)}/>
-                      </span>
+                <span className="actions">
+                  <BsFillTrashFill
+                      className="delete-btn"
+                      onClick={() => deleteRow(key)}
+                  />
+                  <BsFillPencilFill onClick={() => editRow(key)} />
+                </span>
                         </td>
                     </tr>
-                )
+                );
             })}
             </tbody>
         </table>
